@@ -78,21 +78,21 @@ HTSeq = env.Command(HTSeq_target, [pip],
 
 
 ## RNAfold
-RNAfold_dnwld = env.Command(os.path.join(TOOLS, "ViennaRNA-2.4.14.tar.gz"), 
-            Uri("https://www.tbi.univie.ac.at/RNA/download/sourcecode/2_4_x/ViennaRNA-2.4.14.tar.gz"), 
-            "wget -q ${SOURCE} -O ${TARGET}")
-RNAfold_xtr = env.Command(os.path.join(TOOLS, "ViennaRNA-2.4.14/configure"), 
-                          RNAfold_dnwld, 
-                          "tar xfz ${SOURCE} -C `dirname ${SOURCE}`")
-RNAfold_cfg = env.Command(os.path.join(TOOLS, "ViennaRNA-2.4.14/Makefile"), 
-                          RNAfold_xtr, 
-                          "cd `dirname ${SOURCE}` && ./configure")
-RNAfold_make = env.Command(os.path.join(TOOLS, "ViennaRNA-2.4.14/src/bin//RNAfold"), 
-                           RNAfold_cfg,
-                           "cd `dirname ${SOURCE}` && make $( -j $CPUS $)")
-RNAfold_link = env.Command(os.path.join(BIN, "RNAfold"),
-                           RNAfold_make, 
-                           SymLink)
+#RNAfold_dnwld = env.Command(os.path.join(TOOLS, "ViennaRNA-2.4.14.tar.gz"), 
+#            Uri("https://www.tbi.univie.ac.at/RNA/download/sourcecode/2_4_x/ViennaRNA-2.4.14.tar.gz"), 
+#            "wget -q ${SOURCE} -O ${TARGET}")
+#RNAfold_xtr = env.Command(os.path.join(TOOLS, "ViennaRNA-2.4.14/configure"), 
+#                          RNAfold_dnwld, 
+#                          "tar xfz ${SOURCE} -C `dirname ${SOURCE}`")
+#RNAfold_cfg = env.Command(os.path.join(TOOLS, "ViennaRNA-2.4.14/Makefile"), 
+#                          RNAfold_xtr, 
+#                          "cd `dirname ${SOURCE}` && ./configure")
+#RNAfold_make = env.Command(os.path.join(TOOLS, "ViennaRNA-2.4.14/src/bin//RNAfold"), 
+#                           RNAfold_cfg,
+#                           "cd `dirname ${SOURCE}` && make $( -j $CPUS $)")
+#RNAfold_link = env.Command(os.path.join(BIN, "RNAfold"),
+#                           RNAfold_make, 
+#                           SymLink)
 
 ## BOWTIE
 BOWTIE_dnwld = env.Command(os.path.join(TOOLS, "bowtie-1.1.2-linux-x86_64.zip"),
